@@ -11,7 +11,7 @@
 <a href="#videos">Videos</a>
 </p>
 
-<p align="center"><code>6 joints</code> &nbsp; <code>5 head versions</code> &nbsp; <code>11 bench tests passed</code> &nbsp; <code>18 expressions on the real screen</code></p>
+<p align="center"><code>6 joints</code> &nbsp; <code>5 head versions</code> &nbsp; <code>12 bench tests passed</code> &nbsp; <code>18 expressions on the real screen</code></p>
 
 <p align="center"><sub>The head is designed and its electronics passed bench tests, board by board. Nothing is assembled yet. The spine is next.</sub></p>
 
@@ -46,6 +46,7 @@ The goal is a robot that reacts to the people around it with posture, light and 
 - The bearing-pocket fit is proven on a printed PETG test coupon.
 - NOD's 18 expressions run on the real screen, with the light bar colour-matched (bench test programs).
 - Base servo noise at 300 mm: slow moves at 34.8 dBA, against a quiet room at 34.2.
+- The first head servo has run, on one shared cable with the base servo.
 - These are electronics and print tests, not a working head. Nothing is assembled yet.
 
 **◐ Designed in CAD**
@@ -53,7 +54,6 @@ The goal is a robot that reacts to the people around it with posture, light and 
 - Head mass is 1.0 to 1.3 kg, estimated from CAD and not yet weighed.
 
 **○ Planned**
-- First bench run of the three head servos (bought, not yet run).
 - The spine (J2/J3), the base (J1) and power.
 - Motion, face and voice running live on the robot, from its own controller.
 
@@ -73,8 +73,9 @@ Every physical test so far. Simulations, reviews and datasheet research are not 
 - **10 Oct** · Touch screen: passed. 0.25 A max, worst refresh about 26 ms.
 - **10 Oct** · Light bar: passed. 0.63 A full on, 0.11 A at half white.
 - **5 Nov** · NOD's face on the real screen: partly done. Eyes and light-bar colour confirmed.
+- **9 Nov** · First head servo run: passed. A head servo and the base servo on one shared cable, every reading returned, exact moves. Filmed.
 
-Still to test: head servos sharing one bus with the base servo, head servo noise, hearing while the head moves, base torque limit, radar from the base, neck fork twist, voice on the Pi 5.
+Still to test: head servo noise, hearing while the head moves, base torque limit, radar from the base, neck fork twist, voice on the Pi 5.
 
 ## How he will be controlled
 
