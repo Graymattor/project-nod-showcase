@@ -33,6 +33,9 @@ The goal is a robot that reacts to the people around it with posture, light and 
 <p align="center"><img src="assets/img/head-explode.gif" alt="The head shell opening and closing, CAD animation" width="49%"> <img src="assets/img/evidence-servo-noise.jpg" alt="Measured servo noise at 300 mm" width="49%"></p>
 <p align="center"><sub><b>Left:</b> the head, CAD animation (inside shown in plain grey, no part detail). <b>Right:</b> base servo noise, measured at desk distance.</sub></p>
 
+<p align="center"><img src="assets/img/servo-chain.jpg" alt="Three head servos and the base servo daisy-chained on one cable" width="100%"></p>
+<p align="center"><sub><b>Real photo.</b> First servo run, 9 Nov: all three head servos and the base servo on one cable. Unloaded bench test.</sub></p>
+
 <p align="center"><img src="assets/img/fit-prints-strip.jpg" alt="Printed head power carrier with its boards fitted, and earlier fit-print versions" width="100%"></p>
 <p align="center"><sub><b>Real photos.</b> The head power carrier with its boards fitted, and the fit prints it took to get there. Fitted, not yet wired.</sub></p>
 
