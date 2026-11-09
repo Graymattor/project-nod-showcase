@@ -308,7 +308,7 @@ footer .mono{font-size:12px;letter-spacing:.06em}
     <figure><video autoplay muted loop playsinline poster="assets/img/head-explode-poster.jpg" style="width:100%;height:100%;object-fit:cover"><source src="assets/video/head-explode.mp4" type="video/mp4"></video><figcaption class="cap">CAD animation · inside shown in plain grey</figcaption></figure>
   </div>
   <div class="parts">
-    <div><p class="k">Motion</p><h4>3 × FEETECH HL-3915</h4><p>Turn, nod and tilt, each joint on its own bearings. One has now run on the bench, sharing one cable with the base servo.</p></div>
+    <div><p class="k">Motion</p><h4>3 × FEETECH HL-3915</h4><p>Turn, nod and tilt, each joint on its own bearings. All three have run on the bench, daisy-chained on one cable with the base servo.</p></div>
     <div><p class="k">Face</p><h4>5" touch screen</h4><p>18 designed expressions. No mouth: the light bar is the voice.</p></div>
     <div><p class="k">Vision</p><h4>Orbbec Gemini 2L</h4><p>Stereo depth camera behind the smoked window.</p></div>
     <div><p class="k">Hearing</p><h4>ReSpeaker Flex + 40 mm speaker</h4><p>A microphone array in the head, with a physical mute.</p></div>
@@ -346,7 +346,7 @@ footer .mono{font-size:12px;letter-spacing:.06em}
 <section id="evidence"><div class="wrap">
   <div class="eyebrow"><span class="num">04</span>Tested &nbsp;·&nbsp; <span class="tier t-built">Built + tested</span></div>
   <h2>Not just renders.</h2>
-  <p class="intro">Each circuit board in the head was bought and tested on the bench, on its own, before the design was allowed to depend on it. These are electronics tests, not a working head: nothing is assembled yet, and only one head servo has run, on the bench. The results are measured, not estimated.</p>
+  <p class="intro">Each circuit board in the head was bought and tested on the bench, on its own, before the design was allowed to depend on it. These are electronics tests, not a working head: nothing is assembled yet, and the head servos have only run on the bench, unloaded. The results are measured, not estimated.</p>
   <figure class="strip"><img src="assets/img/real-face-strip.jpg" alt="NOD's face on the real touch screen in three expressions, the light bar changing colour to match"></figure>
   <div class="strip-cap"><span><b>Real footage</b> · three of 18 expressions on the real screen, light bar colour-matched</span><span>Bench test program · not yet on the robot</span></div>
   <div class="evidence">
@@ -374,7 +374,7 @@ footer .mono{font-size:12px;letter-spacing:.06em}
     <li><span class="d">10 Oct</span><span class="t"><strong>Touch screen.</strong> 0.25 A maximum, worst refresh about 26 ms, touch and animation under serial traffic.</span><span class="r">Passed</span></li>
     <li><span class="d">10 Oct</span><span class="t"><strong>Light bar.</strong> 0.63 A with everything full on, 0.11 A at half white. Level shifter proven on the real sticks.</span><span class="r">Passed</span></li>
     <li><span class="d">5 Nov</span><span class="t"><strong>NOD's face on the real screen.</strong> 18 expressions with the light bar; eyes and colour confirmed.</span><span class="r part">Partly done</span></li>
-    <li><span class="d">9 Nov</span><span class="t"><strong>First head servo run.</strong> A head servo and the base servo on one shared cable: every reading came back, each moved exactly when told, and the other stayed still. Filmed.</span><span class="r">Passed</span></li>
+    <li><span class="d">9 Nov</span><span class="t"><strong>First head servo run.</strong> All three head servos and the base servo daisy-chained on one cable: every reading came back, each moved exactly when told, and the others stayed still. Filmed.</span><span class="r">Passed</span></li>
   </ul>
   <h3 class="sub" style="margin-top:48px">Still to test</h3>
   <div class="todo"><span>Head servo noise</span><span>Hearing while the head moves</span><span>Base torque limit</span><span>Radar from the base</span><span>Neck fork twist</span><span>Voice on the Pi 5</span></div>
@@ -417,7 +417,7 @@ footer .mono{font-size:12px;letter-spacing:.06em}
       <li><strong>Voice</strong>: shared with the cartoon; not yet running on the robot</li>
     </ul></div>
     <div class="col c3"><span class="tier t-plan">Planned</span><ul>
-      <li><strong>Head servos</strong>: one run on the bench, sharing a cable with the base servo; the other two go in with the head</li>
+      <li><strong>Head servos</strong>: all three run on the bench, chained with the base servo on one cable; not yet in the head</li>
       <li><strong>Spine (J2/J3)</strong>: waits for the real head weight</li>
       <li><strong>Base (J1)</strong> and power</li>
       <li><strong>Control software</strong>: four layers planned; the limits and a planning tool are drafted</li>

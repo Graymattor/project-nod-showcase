@@ -46,7 +46,7 @@ The goal is a robot that reacts to the people around it with posture, light and 
 - The bearing-pocket fit is proven on a printed PETG test coupon.
 - NOD's 18 expressions run on the real screen, with the light bar colour-matched (bench test programs).
 - Base servo noise at 300 mm: slow moves at 34.8 dBA, against a quiet room at 34.2.
-- The first head servo has run, on one shared cable with the base servo.
+- All three head servos have run on the bench, daisy-chained with the base servo on one cable.
 - These are electronics and print tests, not a working head. Nothing is assembled yet.
 
 **◐ Designed in CAD**
@@ -73,7 +73,7 @@ Every physical test so far. Simulations, reviews and datasheet research are not 
 - **10 Oct** · Touch screen: passed. 0.25 A max, worst refresh about 26 ms.
 - **10 Oct** · Light bar: passed. 0.63 A full on, 0.11 A at half white.
 - **5 Nov** · NOD's face on the real screen: partly done. Eyes and light-bar colour confirmed.
-- **9 Nov** · First head servo run: passed. A head servo and the base servo on one shared cable, every reading returned, exact moves. Filmed.
+- **9 Nov** · First head servo run: passed. All three head servos and the base servo daisy-chained on one cable, every reading returned, exact moves. Filmed.
 
 Still to test: head servo noise, hearing while the head moves, base torque limit, radar from the base, neck fork twist, voice on the Pi 5.
 
