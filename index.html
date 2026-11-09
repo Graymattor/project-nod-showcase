@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project NOD</title>
+<meta name="description" content="Project NOD: a six-joint desk robot, designed and built at home. Engineering status, renders and videos.">
+<meta name="theme-color" content="#0b0b0c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Project NOD">
+<meta property="og:description" content="A six-joint desk robot with a screen for a face, designed and built at home by one maker.">
+<meta property="og:image" content="https://graymattor.github.io/project-nod-showcase/assets/img/hero-awake.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b0b0c'/%3E%3Crect x='7' y='14' width='18' height='4' rx='2' fill='%23f2892a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0c; --bg2:#121214; --panel:#17171a; --line:#2a2a2e;
+  --ink:#ecebe7; --ink2:#a9a8a3; --ink3:#6f6e6a;
+  --orange:#f2892a; --orange-dim:rgba(242,137,42,.14);
+  --built:#f2892a; --cad:#d9d7d0; --plan:#6f6e6a;
+  --sans:"Inter Tight",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+.mono{font-family:var(--mono)}
+.eyebrow{font:500 14px/1.2 var(--sans);letter-spacing:0;color:var(--ink3)}
+.eyebrow .num{font-family:var(--mono);color:var(--orange);margin-right:10px}
+.eyebrow b{color:var(--orange);font-weight:500}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto 0;z-index:10;backdrop-filter:blur(14px);background:rgba(11,11,12,.72);border-bottom:1px solid rgba(255,255,255,.05)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.mark{font:600 15px/1 var(--sans);letter-spacing:.22em}
+.mark i{display:inline-block;width:18px;height:3px;background:var(--orange);vertical-align:middle;margin-right:10px;border-radius:2px;font-style:normal}
+nav ul{display:flex;gap:26px;list-style:none;font:500 13px/1 var(--sans);color:var(--ink2)}
+nav a{text-decoration:none}
+nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{position:relative;min-height:100vh;display:grid;align-items:end;overflow:hidden;background:#050505}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 50%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.15) 0%,rgba(5,5,5,0) 40%,rgba(11,11,12,.92) 88%,var(--bg) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:9vh;width:100%}
+.hero h1{font:700 clamp(54px,10vw,132px)/.9 var(--sans);letter-spacing:-.035em}
+.hero p.lede{max-width:560px;margin-top:22px;font-size:clamp(18px,2vw,21px);color:var(--ink2)}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:34px}
+.render-tag{position:absolute;z-index:2;top:78px;right:28px;font:500 13px/1 var(--sans);color:var(--ink3)}
+
+/* tiers */
+.tier{display:inline-flex;align-items:center;gap:8px;font:500 13.5px/1 var(--sans);color:var(--ink2)}
+.tier::before{content:"";width:10px;height:10px;border-radius:50%;flex:none}
+.t-built::before{background:var(--built)}
+.t-cad::before{border:2px solid var(--cad);background:linear-gradient(90deg,var(--cad) 50%,transparent 50%)}
+.t-plan::before{border:2px solid var(--plan)}
+
+section{padding:130px 0;border-top:1px solid rgba(255,255,255,.04)}
+h2{font:600 clamp(34px,4.4vw,54px)/1.04 var(--sans);letter-spacing:-.025em;margin:18px 0 22px}
+.intro{max-width:640px;color:var(--ink2);font-size:19px}
+
+/* NOD's notes */
+.note{display:flex;gap:14px;align-items:flex-start;max-width:440px;margin-top:34px;padding:14px 16px 14px 14px;border:1px solid var(--line);border-radius:14px;background:var(--bg2)}
+.note img{width:46px;height:46px;border-radius:10px;flex:none;object-fit:cover}
+.note p{font:400 14px/1.5 var(--mono);color:var(--ink2)}
+.note p::before{content:"NOD: ";color:var(--orange)}
+
+/* what it is */
+.joints{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center;margin-top:56px}
+.joints figure{border-radius:18px;overflow:hidden;background:#000;position:relative}
+.cap{position:absolute;left:14px;bottom:12px;font:500 12.5px/1 var(--sans);color:rgba(255,255,255,.7)}
+.jlist{list-style:none;border-top:1px solid var(--line)}
+.jlist li{display:grid;grid-template-columns:56px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.jlist .j{font:500 14px/1.5 var(--mono);color:var(--orange)}
+.jlist strong{font-weight:600}
+.jlist span{color:var(--ink2);display:block;font-size:15px}
+
+/* head */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:56px}
+.split figure{position:relative;border-radius:18px;overflow:hidden;background:#000;aspect-ratio:16/10}
+.split figure img{width:100%;height:100%;object-fit:cover}
+.slot{border:1px dashed #3a3a3f !important;background:repeating-linear-gradient(135deg,#111113 0 14px,#141416 14px 28px) !important;display:grid;place-items:center;text-align:center;padding:24px}
+.slot p{font:500 12px/1.6 var(--mono);color:var(--ink3);letter-spacing:.06em;text-transform:uppercase}
+.slot p b{display:block;color:var(--ink2);font-weight:500;margin-bottom:6px}
+.parts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:18px}
+.parts div{background:var(--bg2);padding:22px 22px 24px}
+.parts h4{font:600 16px/1.3 var(--sans);margin-bottom:6px}
+.parts p{font-size:14.5px;color:var(--ink2);line-height:1.5}
+.parts .k{font:500 13px/1 var(--sans);color:var(--orange);margin-bottom:12px}
+
+/* evidence */
+.evidence{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.card .ph{aspect-ratio:4/3;border:0 !important;border-bottom:1px dashed #3a3a3f !important;margin:0}
+.card figure.ph{position:relative;overflow:hidden;border-bottom:1px solid var(--line) !important}
+.card figure.ph img{width:100%;height:100%;object-fit:cover}
+.card figure.ph::after{content:"";position:absolute;inset:auto 0 0 0;height:38%;background:linear-gradient(transparent,rgba(0,0,0,.75))}
+.card figure.ph .cap{z-index:1;color:rgba(255,255,255,.8)}
+.card .body{padding:20px 22px 24px}
+.card h4{font:600 17px/1.3 var(--sans);margin:12px 0 8px}
+.card .result{font:500 14px/1.5 var(--mono);color:var(--ink)}
+.card .result em{font-style:normal;color:var(--orange)}
+.card .src{margin-top:10px;font:400 12px/1.4 var(--mono);color:var(--ink3)}
+
+/* status */
+.status{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
+.col{border-top:2px solid var(--line);padding-top:22px}
+.col.c1{border-color:var(--built)} .col.c2{border-color:var(--cad)} .col.c3{border-color:var(--plan)}
+.col ul{list-style:none;margin-top:18px}
+.col li{padding:11px 0;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--ink2)}
+.col li strong{color:var(--ink);font-weight:500}
+
+/* control */
+.layers{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:56px}
+.layers>div{background:var(--bg2);padding:22px 22px 24px}
+.layers .k{font:500 13px/1 var(--mono);color:var(--orange);margin-bottom:12px}
+.layers h4{font:600 16px/1.3 var(--sans);margin-bottom:6px}
+.layers p{font-size:14.5px;color:var(--ink2);line-height:1.5}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+.rules div{border-top:2px solid var(--orange);padding-top:16px}
+.rules h4{font:600 16px/1.3 var(--sans);margin-bottom:6px}
+.rules p{font-size:14.5px;color:var(--ink2);line-height:1.5}
+.studio{margin-top:48px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#1c1c19}
+@media (max-width:900px){.layers{grid-template-columns:1fr 1fr}.rules{grid-template-columns:1fr}}
+@media (max-width:560px){.layers{grid-template-columns:1fr}}
+/* roadmap */
+.road{position:relative;display:grid;grid-template-columns:repeat(9,1fr);margin-top:64px}
+.road::before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:linear-gradient(90deg,var(--orange) 0 25%,var(--line) 25%)}
+.step{position:relative;padding-right:14px}
+.dot{width:20px;height:20px;border-radius:50%;background:var(--bg);border:2px solid var(--plan);position:relative;z-index:1}
+.step.done .dot{background:var(--orange);border-color:var(--orange)}
+.step.now .dot{border-color:var(--orange);box-shadow:0 0 0 6px var(--orange-dim)}
+.step h4{font:600 14.5px/1.3 var(--sans);margin-top:20px}
+.step p{font-size:13.5px;color:var(--ink3);margin-top:6px;line-height:1.5}
+.step .when{font:500 13px/1 var(--sans);color:var(--ink3);margin-top:14px;display:block}
+.step.done .when,.step.now .when{color:var(--orange)}
+
+/* videos */
+.videos{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px;align-items:start}
+.vid.wide{grid-column:1/-1;display:grid;grid-template-columns:2.2fr 1fr;gap:32px;align-items:end;margin-bottom:22px}
+.vid.wide h4{font-size:26px;line-height:1.2;letter-spacing:-.015em;margin-top:0}
+.vid.wide .blurb{font:400 16px/1.6 var(--sans);color:var(--ink2);text-transform:none;letter-spacing:0;margin-top:14px}
+.vid{text-decoration:none;display:block}
+.vid .th{position:relative;border-radius:14px;overflow:hidden;background:#000;aspect-ratio:9/16}
+.vid.wide .th{aspect-ratio:16/9}
+.vid .th img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.vid:hover .th img{transform:scale(1.03)}
+.vid .th::after{content:"";position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:rgba(0,0,0,.55) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7l9 5-9 5z' fill='%23fff'/%3E%3C/svg%3E") center/26px no-repeat;backdrop-filter:blur(4px)}
+.vid h4{font:600 15px/1.35 var(--sans);margin-top:12px}
+.vid p{font:400 13px/1.4 var(--sans);color:var(--ink3);margin-top:4px}
+
+/* cartoon band */
+.twin{display:grid;grid-template-columns:320px 1fr;gap:56px;align-items:center}
+.twin img{border-radius:18px;background:#efe9df}
+
+footer{padding:70px 0 90px;border-top:1px solid var(--line);color:var(--ink3);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer .mono{font-size:12px;letter-spacing:.06em}
+
+/* shell history */
+.shells{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:56px}
+.shells figure{background:#121214;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.shells figure.final{border-color:rgba(242,137,42,.55)}
+.shells figcaption{padding:12px 14px 16px}
+.shells .d{font:500 13px/1 var(--mono);color:var(--orange)}
+.shells h4{font:600 15px/1.3 var(--sans);margin:8px 0 4px}
+.shells p{font-size:13.5px;line-height:1.45;color:var(--ink2)}
+.sub{font:600 22px/1.2 var(--sans);letter-spacing:-.01em;margin-top:72px}
+/* lessons */
+.lessons{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+.lesson{border-left:2px solid var(--orange);padding:4px 0 4px 18px}
+.lesson h4{font:600 17px/1.3 var(--sans);margin-bottom:8px}
+.lesson p{font-size:15px;color:var(--ink2)}
+.card figure.ph video{width:100%;height:100%;object-fit:cover}
+
+/* test log */
+.log{list-style:none;margin-top:28px;border-top:1px solid var(--line)}
+.log li{display:grid;grid-template-columns:90px 1fr auto;gap:18px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line)}
+.log .d{font:500 13px/1.4 var(--mono);color:var(--ink3)}
+.log strong{font-weight:600;color:var(--ink)}
+.log span.t{color:var(--ink2);font-size:15px}
+.log .r{font:500 13px/1 var(--sans);color:var(--orange);white-space:nowrap}
+.log .r.part{color:var(--cad)}
+.todo{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.todo span{border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;color:var(--ink2)}
+
+/* senses */
+.senses{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px;margin-top:56px;border-top:1px solid var(--line)}
+.sense{display:grid;grid-template-columns:1fr auto;gap:6px 18px;padding:22px 0;border-bottom:1px solid var(--line)}
+.sense h4{font:600 19px/1.3 var(--sans)}
+.sense .tier{justify-self:end;align-self:start;white-space:nowrap}
+.sense p{grid-column:1/-1;font-size:15px;color:var(--ink2)}
+.sense p b{color:var(--ink);font-weight:500}
+
+/* numbers band */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats div{padding:34px 22px 30px;border-left:1px solid var(--line)}
+.stats div:first-child{border-left:0;padding-left:0}
+.stats b{display:block;font:600 clamp(34px,4vw,50px)/1 var(--sans);letter-spacing:-.03em;color:var(--ink)}
+.stats b small{font-size:.45em;color:var(--orange);margin-left:4px;letter-spacing:0}
+.stats span{display:block;margin-top:12px;font:400 14.5px/1.45 var(--sans);color:var(--ink2)}
+.strip{margin-top:56px;border-radius:18px;overflow:hidden;background:#000;position:relative}
+.strip img{width:100%}
+.strip-cap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:14px;font:400 14px/1.5 var(--sans);color:var(--ink3)}
+.strip-cap b{color:var(--orange);font-weight:500}
+.cta{display:inline-flex;align-items:center;gap:10px;margin-top:30px;padding:13px 20px;border-radius:999px;background:var(--orange);color:#140a02;font:600 15px/1 var(--sans);text-decoration:none;transition:transform .2s ease,background .2s ease}
+.cta:hover{background:#ff9a3d;transform:translateY(-1px)}
+.cta.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);margin-left:10px}
+.cta.ghost:hover{border-color:var(--ink3);background:transparent}
+.follow{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+@media (prefers-reduced-motion:reduce){
+.mock{position:fixed;left:16px;bottom:16px;z-index:20;font:500 11px/1.3 var(--mono);background:#3b1d06;color:#ffcf9e;border:1px solid #7a3f10;padding:8px 11px;border-radius:8px;letter-spacing:.06em;max-width:300px}
+
+@media (max-width:900px){
+  nav ul{display:none}
+  .joints,.split,.twin{grid-template-columns:1fr}
+  .parts,.evidence,.status,.senses,.lessons{grid-template-columns:1fr}
+  .shells{grid-template-columns:1fr 1fr}
+  .log li{grid-template-columns:1fr auto;gap:4px 14px}
+  .log .d{grid-column:1/-1}
+  .shells figure.final{grid-column:1/-1}
+  .road{grid-template-columns:1fr;gap:26px}
+  .road::before{display:none}
+  .videos{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .stats div{border-left:0;padding-left:0;border-top:1px solid var(--line)}
+  .stats div:nth-child(-n+2){border-top:0}
+  .stats div:last-child{grid-column:1/-1}
+  .follow{grid-template-columns:1fr}
+  .cta.ghost{margin-left:0;margin-top:12px}
+  .vid.wide{grid-template-columns:1fr;gap:12px}
+  .vid.wide h4{font-size:20px}
+  section{padding:90px 0}
+  .wrap{padding:0 16px}
+  .render-tag{right:16px}
+  .twin img{max-width:280px}
+  .hero{min-height:auto;display:block;padding-top:58px}
+  .hero video,.hero .poster{position:relative;height:56vh;object-position:42% 50%}
+  .hero .poster{display:none}
+  .hero::after{top:auto;height:40%;bottom:auto;top:calc(58px + 56vh - 40%)}
+  .hero .wrap{padding-top:8px;padding-bottom:64px}
+}
+</style>
+</head>
+<body>
+
+<div class="mock">MOCK-UP · NOT PUBLISHED</div>
+
+<nav><div class="wrap">
+  <div class="mark"><i></i>PROJECT NOD</div>
+  <ul><li><a href="#what">The robot</a></li><li><a href="#head">The head</a></li><li><a href="#senses">Senses</a></li><li><a href="#evidence">Tested</a></li><li><a href="#control">Control</a></li><li><a href="#status">Status</a></li><li><a href="#videos">Videos</a></li></ul>
+</div></nav>
+
+<header class="hero">
+  <img class="poster" src="assets/img/orbit-poster.jpg" alt="">
+  <video autoplay muted loop playsinline poster="assets/img/orbit-poster.jpg"><source src="assets/video/orbit.mp4" type="video/mp4"></video>
+  <div class="render-tag">Concept render · body not yet designed</div>
+  <div class="wrap">
+    <div class="eyebrow"><b>●</b>&nbsp; A real robot in development</div>
+    <h1>Project NOD</h1>
+    <p class="lede">A six-joint desk robot with a screen for a face, being designed and built at home by one maker. The head is designed and its electronics have passed bench tests, board by board. Nothing is assembled yet. The spine is next.</p>
+    <div class="meta">
+      <span class="tier t-built">Built + tested</span>
+      <span class="tier t-cad">Designed in CAD</span>
+      <span class="tier t-plan">Planned</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap"><div class="stats">
+  <div><b>6</b><span>Joints, base to head tilt</span></div>
+  <div><b>5</b><span>Head versions to make it all fit</span></div>
+  <div><b>11</b><span>Bench tests passed since 10 September</span></div>
+  <div><b>18</b><span>Expressions running on the real screen</span></div>
+  <div><b>0.6<small>dB</small></b><span>Slow-move servo noise above a quiet room</span></div>
+</div></div>
+
+<section id="what"><div class="wrap">
+  <div class="eyebrow"><span class="num">01</span>The robot</div>
+  <h2>Small enough for a desk.<br>Expressive enough to notice you.</h2>
+  <p class="intro">About 540–600 mm tall when awake. A base that turns, a spine that bends, and a head that looks, nods and tilts. The goal is a robot that reacts to the people around it with posture, light and a face, not a chat window on a stick.</p>
+  <div class="joints">
+    <figure><img src="assets/img/side-spine.jpg" alt="Side view render of NOD showing the spine"><figcaption class="cap">Concept render</figcaption></figure>
+    <ul class="jlist">
+      <li><span class="j">J1</span><div><strong>Waist swivel</strong><span>The whole robot turns on its base.</span></div></li>
+      <li><span class="j">J2</span><div><strong>Lower back</strong><span>The big lean: curling down, waking up, leaning in. The hardest joint.</span></div></li>
+      <li><span class="j">J3</span><div><strong>Upper back</strong><span>Fine posture and small flinches.</span></div></li>
+      <li><span class="j">J4</span><div><strong>Head turn</strong><span>"No."</span></div></li>
+      <li><span class="j">J5</span><div><strong>Head nod</strong><span>"Yes." Hence the name.</span></div></li>
+      <li><span class="j">J6</span><div><strong>Head tilt</strong><span>The curious-dog tilt.</span></div></li>
+    </ul>
+  </div>
+  <div class="note"><img src="assets/img/nod-avatar.jpg" alt=""><p>He spent months on my neck, then named me after it.</p></div>
+</div></section>
+
+<section id="head"><div class="wrap">
+  <div class="eyebrow"><span class="num">02</span>The head &nbsp;·&nbsp; <span class="tier t-cad">Designed in CAD</span></div>
+  <h2>Inside the head.</h2>
+  <p class="intro">Designed in Fusion 360, around parts that are already bought and tested. Three servos on their own bearings, a depth camera, a touch screen face, microphones, a speaker and a light bar that is meant to move with the voice. The joints are built as subassemblies (a J4 cassette, a J5 cradle, J6 bearing cartridges) rather than one big print, and the shell is held on with screws.</p>
+  <div class="split">
+    <figure><img src="assets/img/head-close.jpg" alt="NOD's head, front three-quarter render"><figcaption class="cap">CAD render</figcaption></figure>
+    <figure><video autoplay muted loop playsinline poster="assets/img/head-explode-poster.jpg" style="width:100%;height:100%;object-fit:cover"><source src="assets/video/head-explode.mp4" type="video/mp4"></video><figcaption class="cap">CAD animation · inside shown in plain grey</figcaption></figure>
+  </div>
+  <div class="parts">
+    <div><p class="k">Motion</p><h4>3 × FEETECH HL-3915</h4><p>Turn, nod and tilt, each joint on its own bearings. Bought; not yet run on the bench.</p></div>
+    <div><p class="k">Face</p><h4>5" touch screen</h4><p>18 designed expressions. No mouth: the light bar is the voice.</p></div>
+    <div><p class="k">Vision</p><h4>Orbbec Gemini 2L</h4><p>Stereo depth camera behind the smoked window.</p></div>
+    <div><p class="k">Hearing</p><h4>ReSpeaker Flex + 40 mm speaker</h4><p>A microphone array in the head, with a physical mute.</p></div>
+    <div><p class="k">Light</p><h4>2 × RGBW sticks</h4><p>A 16-pixel light bar across the top of the face.</p></div>
+    <div><p class="k">Control</p><h4>ESP32-S3 + Raspberry Pi 5</h4><p>Real-time head I/O on the ESP32. The brain on the Pi.</p></div>
+  </div>
+  <h3 class="sub">Five shells in three weeks</h3>
+  <p class="intro" style="font-size:17px;margin-top:10px">The outside of the head, version by version. Each one changed for a reason found in CAD, not by taste. Shown at the same scale; the inside is not shown.</p>
+  <div class="shells">
+    <figure><img src="assets/img/shell-1.jpg" alt="Head shell, first version"><figcaption><span class="d">16 Oct</span><h4>The soft box</h4><p>Chosen from five shape ideas. Wide window, ears on the nod axis.</p></figcaption></figure>
+    <figure><img src="assets/img/shell-2.jpg" alt="Head shell, second version"><figcaption><span class="d">17 Oct</span><h4>New neck</h4><p>Re-cut around a compact neck, so the head can nod and tilt fully.</p></figcaption></figure>
+    <figure><img src="assets/img/shell-3.jpg" alt="Head shell, third version, much narrower"><figcaption><span class="d">29 Oct</span><h4>Too narrow</h4><p>Squeezed for a compact layout. It failed: the cables could not bend inside it.</p></figcaption></figure>
+    <figure><img src="assets/img/shell-4.jpg" alt="Head shell, fourth version, wide again"><figcaption><span class="d">29 Oct</span><h4>Room for cables</h4><p>Widened so every cable bends safely, with no adapters.</p></figcaption></figure>
+    <figure class="final"><img src="assets/img/shell-5.jpg" alt="Head shell, final version"><figcaption><span class="d">1 Nov</span><h4>The one in the CAD</h4><p>Slimmer again, screen tight behind the glass, and no glue anywhere.</p></figcaption></figure>
+  </div>
+  <div class="note"><img src="assets/img/nod-avatar.jpg" alt=""><p>This is my head. Version five. I've stopped asking.</p></div>
+</div></section>
+
+<section id="senses"><div class="wrap">
+  <div class="eyebrow"><span class="num">03</span>Senses</div>
+  <h2>He knows you are there<br>before you touch him.</h2>
+  <p class="intro">The head is packed with sensors so NOD can react the way a pet does: turn to a sound, look up when you walk in, lean into a pat. Each one is labelled with where it really stands.</p>
+  <div class="senses">
+    <div class="sense"><h4>Sees in 3D</h4><span class="tier t-built">Tested</span><p><b>Stereo depth camera</b> behind a smoked window, with its own motion sensor. Streams to the Raspberry Pi 5.</p></div>
+    <div class="sense"><h4>Hears where you are</h4><span class="tier t-built">Tested</span><p><b>Four-microphone far-field array</b>, made for voices across a room. It has a real mute button and a red light, not a software promise.</p></div>
+    <div class="sense"><h4>Knows you walked in</h4><span class="tier t-built">Bench-tested</span><p><b>mmWave radar sensors</b>, made to sense people even when they sit still. They work on the bench. They go in the base, which is not designed yet.</p></div>
+    <div class="sense"><h4>Notices the room light</h4><span class="tier t-built">Bench-tested</span><p><b>Ambient light sensor</b>, planned behind a small window in the forehead, so his face and light bar can dim at night.</p></div>
+    <div class="sense"><h4>Feels a pat</h4><span class="tier t-plan">Bought</span><p><b>Hidden touch pads</b> inside the shell, read by a capacitive touch board. The board is bought; its mounting is being added to the head, and testing waits for the real shell.</p></div>
+    <div class="sense"><h4>Feels a tap or a knock</h4><span class="tier t-plan">Planned</span><p><b>Piezo tap sensors</b> in the shell, so a knock on the head gets a reaction. How many, and where, is settled by a small bench test first.</p></div>
+    <div class="sense"><h4>Touch screen face</h4><span class="tier t-built">Tested</span><p><b>Touch on the face itself</b>, separate from the shell pads. Touch, animation and power-cycle recovery passed on the bench.</p></div>
+    <div class="sense"><h4>Talks back</h4><span class="tier t-built">Tested</span><p><b>40 mm speaker</b> in the head, and a light bar across his brow that is meant to move with his voice. No mouth, on purpose.</p></div>
+  </div>
+</div></section>
+
+<section id="evidence"><div class="wrap">
+  <div class="eyebrow"><span class="num">04</span>Tested &nbsp;·&nbsp; <span class="tier t-built">Built + tested</span></div>
+  <h2>Not just renders.</h2>
+  <p class="intro">Each circuit board in the head was bought and tested on the bench, on its own, before the design was allowed to depend on it. These are electronics tests, not a working head: nothing is assembled yet, and the three head servos haven't run. The results are measured, not estimated.</p>
+  <figure class="strip"><img src="assets/img/real-face-strip.jpg" alt="NOD's face on the real touch screen in three expressions, the light bar changing colour to match"></figure>
+  <div class="strip-cap"><span><b>Real footage</b> · three of 18 expressions on the real screen, light bar colour-matched</span><span>Bench test program · not yet on the robot</span></div>
+  <div class="evidence">
+    <div class="card"><figure class="ph"><video autoplay muted loop playsinline poster="assets/img/face-real-poster.jpg" aria-label="NOD's face changing expression on the real touch screen, the light bar changing colour above it"><source src="assets/video/face-real.mp4" type="video/mp4"></video><figcaption class="cap">Real footage · screen + light bar</figcaption></figure><div class="body"><span class="tier t-built">Running</span><h4>Touch screen + face</h4><p class="result">Power-cycle recovery, animation and touch: <em>passed</em>. NOD's <em>18 expressions</em> now run on it, with the light bar colour-matched. Eyes and colour confirmed; the rest of the checklist is still open.</p></div></div>
+    <div class="card"><figure class="ph"><img src="assets/img/evidence-light-stick.jpg" alt="RGBW light stick wired to the current test rig"><figcaption class="cap">Real photo · test rig, unlit</figcaption></figure><div class="body"><span class="tier t-built">Measured</span><h4>Light bar</h4><p class="result"><em>0.63 A</em> at 4.84 V with all 16 pixels fully on.</p></div></div>
+    <div class="card"><figure class="ph"><img src="assets/img/evidence-depth-pointcloud.jpg" alt="Point cloud from the Gemini 2L streaming on a Raspberry Pi 5"><figcaption class="cap">Real capture · Gemini 2L on the Pi 5</figcaption></figure><div class="body"><span class="tier t-built">Passed</span><h4>Depth camera</h4><p class="result">Sustained stream, reconnects and Raspberry Pi 5: <em>passed</em>.</p></div></div>
+    <div class="card"><figure class="ph"><img src="assets/img/evidence-servo-noise.jpg" alt="Bar chart of measured servo noise at 300 mm"><figcaption class="cap">Real measurement · phone sound meter</figcaption></figure><div class="body"><span class="tier t-built">Measured</span><h4>Servo noise</h4><p class="result">Base servo at desk distance: slow moves <em>34.8 dBA</em>, against a quiet room at 34.2.</p></div></div>
+    <div class="card"><figure class="ph"><img src="assets/img/evidence-speaker.jpg" alt="The head speaker on the bench"><figcaption class="cap">Real photo · the head speaker</figcaption></figure><div class="body"><span class="tier t-built">Passed</span><h4>Microphones + speaker</h4><p class="result">Standalone bring-up: <em>passed</em>. In-head listening test waits for an assembled head.</p></div></div>
+    <div class="card"><figure class="ph"><img src="assets/img/evidence-bearing-coupon.jpg" alt="A 608 bearing pressed into a printed PETG test coupon"><figcaption class="cap">Real photo · 608 bearing in a PETG test coupon</figcaption></figure><div class="body"><span class="tier t-built">Passed</span><h4>Printed bearing fit</h4><p class="result">Bearing-pocket fit <em>proven</em> on a printed test coupon before any joint was designed around it. Also passed: the <em>USB backbone</em>, four devices through one hub with power-cycle recovery.</p></div></div>
+  </div>
+  <figure class="strip" style="margin-top:28px"><img src="assets/img/fit-prints-strip.jpg" alt="A printed head power carrier with its regulator, level shifter and WAGO terminals fitted, next to a pile of earlier fit-print versions"></figure>
+  <div class="strip-cap"><span><b>Real photos</b> · head power carrier with its boards fitted, and the fit prints it took to get there</span><span>Fitted, not yet wired</span></div>
+  <h3 class="sub">The test log</h3>
+  <p class="intro" style="font-size:17px;margin-top:10px">Every physical test so far, in order. Simulations, reviews and datasheet research are not counted.</p>
+  <ul class="log">
+    <li><span class="d">10 Sep</span><span class="t"><strong>Controller candidate bring-up.</strong> Programming, upload and recovery all worked; rejected anyway, because its pins were awkward to wire.</span><span class="r">Passed</span></li>
+    <li><span class="d">14 Sep</span><span class="t"><strong>Base servo on the bench.</strong> Telemetry, repeated moves at three speeds, no chatter or missed endpoints, about 38 °C. Noise measured at desk distance.</span><span class="r">Passed</span></li>
+    <li><span class="d">21 Sep</span><span class="t"><strong>Depth camera on the Raspberry Pi 5.</strong> Colour, depth, infrared and motion all streamed. A slow link was traced to a mislabelled cable, not the camera.</span><span class="r">Passed</span></li>
+    <li><span class="d">21 Sep</span><span class="t"><strong>Microphone board.</strong> Firmware flashed; capture, playback and recovery worked.</span><span class="r">Passed</span></li>
+    <li><span class="d">21 Sep</span><span class="t"><strong>Three head devices on one USB hub.</strong> 20 reconnects and 11 hub power cycles; every device came back, zero faults.</span><span class="r">Passed</span></li>
+    <li><span class="d">24 Sep</span><span class="t"><strong>Printed bearing pocket.</strong> No slop, free rotation. The pocket size for every head joint comes from this print.</span><span class="r">Passed</span></li>
+    <li><span class="d">24 Sep</span><span class="t"><strong>Screen mounting coupon.</strong> Five hole sizes printed against the real screen; the service fit was chosen from the print.</span><span class="r">Passed</span></li>
+    <li><span class="d">5 Oct</span><span class="t"><strong>Depth camera endurance.</strong> Sustained streaming, reconnects and reboots, on Windows and on the Pi 5.</span><span class="r">Passed</span></li>
+    <li><span class="d">5 Oct</span><span class="t"><strong>Four devices on one hub.</strong> Camera, screen, microphones and the ESP32-S3 controller together, run from the Raspberry Pi 5 with the camera streaming. About 1.2 to 1.3 A in total (recalled, not logged), and a separate 5 V supply for the hub made no difference.</span><span class="r">Passed</span></li>
+    <li><span class="d">10 Oct</span><span class="t"><strong>Touch screen.</strong> 0.25 A maximum, worst refresh about 26 ms, touch and animation under serial traffic.</span><span class="r">Passed</span></li>
+    <li><span class="d">10 Oct</span><span class="t"><strong>Light bar.</strong> 0.63 A with everything full on, 0.11 A at half white. Level shifter proven on the real sticks.</span><span class="r">Passed</span></li>
+    <li><span class="d">5 Nov</span><span class="t"><strong>NOD's face on the real screen.</strong> 18 expressions with the light bar; eyes and colour confirmed.</span><span class="r part">Partly done</span></li>
+  </ul>
+  <h3 class="sub" style="margin-top:48px">Still to test</h3>
+  <div class="todo"><span>Head servos sharing one bus with the base servo</span><span>Head servo noise</span><span>Hearing while the head moves</span><span>Base torque limit</span><span>Radar from the base</span><span>Neck fork twist</span><span>Voice on the Pi 5</span></div>
+  <div class="note"><img src="assets/img/nod-avatar.jpg" alt=""><p>The light bar draws 0.63 amps. I'm told that's "fine". I'd like it in writing.</p></div>
+</div></section>
+
+<section id="control"><div class="wrap">
+  <div class="eyebrow"><span class="num">05</span>How he will be controlled &nbsp;·&nbsp; <span class="tier t-plan">Planned</span></div>
+  <h2>Free to be himself.<br>Inside a fence he cannot cross.</h2>
+  <p class="intro">NOD is meant to act on his own: notice you, look up, lean in, settle down when the room goes quiet. That only works if every move stays inside limits that are written down and proven. The control software is being written for NOD, in four layers.</p>
+  <div class="layers">
+    <div><div class="k">Layer 1</div><h4>Safety controller</h4><p>Its own small board and firmware. It checks every move against NOD's limits, and watches load, heat and the link to the brain.</p></div>
+    <div><div class="k">Layer 2</div><h4>Motion</h4><p>Turns "look at that" or "settle down" into smooth moves between poses, planned inside the limits.</p></div>
+    <div><div class="k">Layer 3</div><h4>Behaviour</h4><p>Decides what NOD wants: asleep, idle, noticed you, paying attention, talking. AI helps choose words and intent.</p></div>
+    <div><div class="k">Layer 4</div><h4>Senses</h4><p>Depth camera, microphones, radar and touch tell the behaviour layer what is happening, and how sure they are.</p></div>
+  </div>
+  <div class="rules">
+    <div><h4>Nothing overrides the safety layer</h4><p>Not the behaviour, not a learned habit, not an AI. If the brain goes quiet, NOD holds still and then settles slowly.</p></div>
+    <div><h4>AI picks what, never how</h4><p>An AI model can ask NOD to pay attention or look pleased. It never sends a motor angle.</p></div>
+    <div><h4>The limits are a control plan</h4><p>Every limit has a measured characteristic, a method and a reaction, and each one is proven on the bench rig before the firmware enforces it.</p></div>
+  </div>
+  <figure class="studio"><img src="assets/img/control-studio.jpg" alt="NOD Control Studio: the head shell on the bench rig, tilted in a curious pose, with a pose library and a sequence player" loading="lazy"></figure>
+  <div class="strip-cap"><span><b>NOD Control Studio</b> · our own planning tool: poses and moves played at NOD's speed limits</span><span>Real shell, outside parts only · not yet connected to the robot</span></div>
+</div></section>
+
+<section id="status"><div class="wrap">
+  <div class="eyebrow"><span class="num">06</span>Where it stands</div>
+  <h2>Honest status.</h2>
+  <p class="intro">Three kinds of claim, kept apart: what is physically built and tested, what exists only in CAD, and what is still a plan.</p>
+  <div class="status">
+    <div class="col c1"><span class="tier t-built">Built + tested</span><ul>
+      <li><strong>Electronics, board by board</strong>: screen, depth camera, mics, light bar, USB hub, ESP32-S3 controller</li>
+      <li><strong>Print fit</strong>: bearing pocket proven on a printed PETG coupon</li>
+      <li><strong>Face</strong>: 18 expressions running on the real screen, light bar colour-matched (bench test programs)</li>
+    </ul></div>
+    <div class="col c2"><span class="tier t-cad">Designed in CAD</span><ul>
+      <li><strong>The head</strong>: finished in Fusion 360; fit prints underway, not yet assembled</li>
+      <li><strong>Head mass</strong>: 1.0–1.3 kg, estimated from CAD, not yet weighed</li>
+      <li><strong>Bench rig</strong>: neck collar to run the head on a post</li>
+      <li><strong>Voice</strong>: shared with the cartoon; not yet running on the robot</li>
+    </ul></div>
+    <div class="col c3"><span class="tier t-plan">Planned</span><ul>
+      <li><strong>Head servos</strong>: bought; first bench run is next</li>
+      <li><strong>Spine (J2/J3)</strong>: waits for the real head weight</li>
+      <li><strong>Base (J1)</strong> and power</li>
+      <li><strong>Control software</strong>: four layers planned; the limits and a planning tool are drafted</li>
+      <li><strong>Motion, face and voice</strong> running live on the robot</li>
+    </ul></div>
+  </div>
+  <h3 class="sub">What changed the plan</h3>
+  <div class="lessons">
+    <div class="lesson"><h4>The head is twice as heavy as the first guess</h4><p>CAD puts it at 1.0 to 1.3 kg. So the spine is not designed yet: it waits until the real head is printed and weighed.</p></div>
+    <div class="lesson"><h4>The neatest head broke the cables</h4><p>The narrowest shell looked best, but straight cables could not bend inside it. The head got wider again.</p></div>
+    <div class="lesson"><h4>Nothing is glued</h4><p>The head is designed with no glue at all: heat-set inserts and screws throughout, so a failed board is a repair, not a reprint.</p></div>
+  </div>
+</div></section>
+
+<section id="roadmap"><div class="wrap">
+  <div class="eyebrow"><span class="num">07</span>Roadmap</div>
+  <h2>Head first. Then the hard part.</h2>
+  <p class="intro">Hardware and software move side by side, and every stage ends in a test. Nothing on the robot gets built on a part that has not passed its own.</p>
+  <div class="road">
+    <div class="step done"><div class="dot"></div><h4>Electronics tested</h4><p>Each head board, on the bench.</p><span class="when">Done</span></div>
+    <div class="step done"><div class="dot"></div><h4>Head designed</h4><p>Fusion master, fit prints.</p><span class="when">Done</span></div>
+    <div class="step now"><div class="dot"></div><h4>Head bench rig</h4><p>The whole head on a post, its limits proven, weighed.</p><span class="when">Now</span></div>
+    <div class="step"><div class="dot"></div><h4>Software on the rig</h4><p>Safety firmware, face, voice, then senses and first behaviours.</p><span class="when">Next</span></div>
+    <div class="step"><div class="dot"></div><h4>Spine J2/J3</h4><p>Lift, hold, fail safely.</p><span class="when">Planned</span></div>
+    <div class="step"><div class="dot"></div><h4>Base J1</h4><p>Swivel, power, sensors.</p><span class="when">Planned</span></div>
+    <div class="step"><div class="dot"></div><h4>Integration</h4><p>Everything powered at once, an hour with no resets.</p><span class="when">Planned</span></div>
+    <div class="step"><div class="dot"></div><h4>First motion</h4><p>Face, light, voice and posture together.</p><span class="when">Planned</span></div>
+    <div class="step"><div class="dot"></div><h4>Soak and finish</h4><p>Days of running for wear, then the final shell.</p><span class="when">Planned</span></div>
+  </div>
+  <h3 class="sub" style="margin-top:56px">Planned now, not left to the end</h3>
+  <div class="todo"><span>Clean shutdown when the power is cut</span><span>Head and spine settle, never slump</span><span>Calibration after any servo swap</span><span>Long soak tests for wear and heat</span><span>A written privacy rule for camera and microphones</span><span>A compliance route, if kits are ever sold</span></div>
+</div></section>
+
+<section id="videos"><div class="wrap">
+  <div class="eyebrow"><span class="num">08</span>Watch</div>
+  <h2>Videos.</h2>
+  <p class="intro">The engineering, and the cartoon twin who comments on it. Real-robot shots are labelled concept renders until there is real footage.</p>
+  <div class="videos">
+    <a class="vid wide" href="https://www.youtube.com/watch?v=KsJcDA6TDW4"><div class="th"><img src="https://i.ytimg.com/vi/KsJcDA6TDW4/maxresdefault.jpg" alt=""></div><div><p>Intro · 84 s</p><h4 style="margin-top:12px">Meet NOD: Building a Real AI Robot From Scratch</h4><p class="blurb">The first episode: what NOD is, and how he will be built.</p></div></a>
+    <a class="vid" href="https://youtube.com/shorts/ErAWYZsyNeg"><div class="th"><img src="https://i.ytimg.com/vi/ErAWYZsyNeg/oar2.jpg" alt=""></div><h4>I'm Actually Being Built?!</h4><p>Short</p></a>
+    <a class="vid" href="https://youtube.com/shorts/nzT1gDBxtX4"><div class="th"><img src="https://i.ytimg.com/vi/nzT1gDBxtX4/oar2.jpg" alt=""></div><h4>The 3D Assembly Guide</h4><p>Short</p></a>
+    <a class="vid" href="https://youtube.com/shorts/yeVYFU0_D28"><div class="th"><img src="https://i.ytimg.com/vi/yeVYFU0_D28/oar2.jpg" alt=""></div><h4>Bambu Lab H3C Has 9 Tools… My Robot Is Jealous!</h4><p>Short</p></a>
+    <a class="vid" href="https://youtube.com/shorts/-Q6wMnWl26s"><div class="th"><img src="https://i.ytimg.com/vi/-Q6wMnWl26s/oar2.jpg" alt=""></div><h4>Why He Is Called NOD</h4><p>Short</p></a>
+  </div>
+</div></section>
+
+<section id="twin"><div class="wrap twin">
+  <img src="assets/img/cartoon-nod.jpg" alt="Cartoon NOD">
+  <div>
+    <div class="eyebrow"><span class="num">09</span>The other NOD</div>
+    <h2>He has a cartoon twin.<br>The twin has opinions.</h2>
+    <p class="intro">Same head, same joints, same face and voice files as the real robot. Fictional, dry and occasionally right. Find him on <a href="https://www.youtube.com/@GraymattorWorks">@GraymattorWorks</a>.</p>
+  </div>
+</div></section>
+
+<section id="follow"><div class="wrap follow">
+  <div>
+    <div class="eyebrow"><span class="num">10</span>Follow the build</div>
+    <h2>Every stage gets filmed.<br>Mistakes included.</h2>
+    <p class="intro">The head goes on the bench rig next: servos running, the real head weighed, and then the spine is designed around that number.</p>
+  </div>
+  <div><a class="cta" href="https://www.youtube.com/@GraymattorWorks?sub_confirmation=1">Subscribe on YouTube</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div><div class="mark" style="color:var(--ink)"><i></i>PROJECT NOD</div><p style="margin-top:14px">By Graymattor Works · <a href="https://www.youtube.com/@GraymattorWorks">YouTube</a></p></div>
+  <p class="mono">Renders are labelled. CAD, firmware and design files are not published here.<br>Not sponsored. Just hopeful.</p>
+</div></footer>
+
+</body>
+</html>
