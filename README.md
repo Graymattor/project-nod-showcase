@@ -114,6 +114,8 @@ Planned now, not left to the end: clean shutdown when the power is cut, head and
 
 <p align="center"><a href="https://www.youtube.com/watch?v=KsJcDA6TDW4"><img src="assets/img/yt-intro.jpg" alt="Meet NOD: Building a Real AI Robot From Scratch" width="100%"></a><br><sub><b>Meet NOD: Building a Real AI Robot From Scratch</b> · intro, 84 s</sub></p>
 
+<p align="center"><a href="https://www.youtube.com/watch?v=Y7uVlZmpFEw"><img src="assets/img/yt-engineering.jpg" alt="My Cartoon Robot Is Real: Inside Project NOD's Head" width="100%"></a><br><sub><b>My Cartoon Robot Is Real: Inside Project NOD's Head</b> · the engineering, 2 min 17 s</sub></p>
+
 <p align="center">
 <a href="https://youtube.com/shorts/ErAWYZsyNeg"><img src="assets/img/yt-built.jpg" alt="I'm Actually Being Built?!" width="24%"></a>
 <a href="https://youtube.com/shorts/nzT1gDBxtX4"><img src="assets/img/yt-guide.jpg" alt="The 3D Assembly Guide" width="24%"></a>
